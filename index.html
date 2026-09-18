@@ -344,6 +344,61 @@
     text-align: center;
   }
   footer .heart { color: var(--accent); }
+
+  /* ---------- Lightbox ---------- */
+  .project-gallery a, .shop-shot { cursor: zoom-in; }
+
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 12, 0.88);
+    z-index: 1000;
+    padding: 40px 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox-overlay.open { display: flex; }
+
+  .lightbox-figure {
+    max-width: min(90vw, 900px);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+  }
+  .lightbox-figure img {
+    display: block;
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-caption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: #cfcdc6;
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: #eceae4;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.16); }
 </style>
 </head>
 <body>
@@ -388,7 +443,7 @@
           <span class="chip">Python</span>
         </div>
       </div>
-      <figure class="shop-shot">
+      <figure class="shop-shot lightbox-trigger">
         <img src="assets/images/shop-metrology.jpg" alt="Measuring a sheet metal bracket with digital calipers against its engineering drawing">
         <figcaption>// inspecting a machined bracket against its drawing, digital calipers in hand</figcaption>
       </figure>
@@ -400,8 +455,8 @@
 
     <div class="project">
       <div class="project-gallery">
-        <a href="assets/images/drawing-machine-1.jpg" target="_blank" rel="noopener"><img src="assets/images/drawing-machine-1.jpg" alt="LEGO Spike Prime drawing machine, angle one"></a>
-        <a href="assets/images/drawing-machine-2.jpg" target="_blank" rel="noopener"><img src="assets/images/drawing-machine-2.jpg" alt="LEGO Spike Prime drawing machine, close-up angle"></a>
+        <a href="assets/images/drawing-machine-1.jpg" class="lightbox-trigger"><img src="assets/images/drawing-machine-1.jpg" alt="LEGO Spike Prime drawing machine, angle one"></a>
+        <a href="assets/images/drawing-machine-2.jpg" class="lightbox-trigger"><img src="assets/images/drawing-machine-2.jpg" alt="LEGO Spike Prime drawing machine, close-up angle"></a>
       </div>
       <div>
         <span class="project-num">01</span>
@@ -421,7 +476,7 @@
           <source src="assets/video/boxing-robot.mp4" type="video/mp4">
           Your browser doesn't support embedded video — <a href="assets/video/boxing-robot.mp4">download the clip</a> instead.
         </video>
-        <a href="assets/images/boxing-robot.jpg" target="_blank" rel="noopener"><img src="assets/images/boxing-robot.jpg" alt="LEGO Spike Prime boxing robot, static shot"></a>
+        <a href="assets/images/boxing-robot.jpg" class="lightbox-trigger"><img src="assets/images/boxing-robot.jpg" alt="LEGO Spike Prime boxing robot, static shot"></a>
       </div>
       <div>
         <span class="project-num">02</span>
@@ -437,7 +492,7 @@
 
     <div class="project">
       <div class="project-gallery single">
-        <a href="assets/images/futsal-ring.jpg" target="_blank" rel="noopener"><img src="assets/images/futsal-ring.jpg" alt="Futsal ring CAD model"></a>
+        <a href="assets/images/futsal-ring.jpg" class="lightbox-trigger"><img src="assets/images/futsal-ring.jpg" alt="Futsal ring CAD model"></a>
       </div>
       <div>
         <span class="project-num">03</span>
@@ -453,8 +508,8 @@
 
     <div class="project">
       <div class="project-gallery">
-        <a href="assets/images/crank-mechanism-cad.jpg" target="_blank" rel="noopener"><img src="assets/images/crank-mechanism-cad.jpg" alt="CAD model of the motorized crank mechanism embosser on a laptop screen"></a>
-        <a href="assets/images/crank-mechanism-build.jpg" target="_blank" rel="noopener"><img src="assets/images/crank-mechanism-build.jpg" alt="Physical motorized crank mechanism embosser, angle one"></a>
+        <a href="assets/images/crank-mechanism-cad.jpg" class="lightbox-trigger"><img src="assets/images/crank-mechanism-cad.jpg" alt="CAD model of the motorized crank mechanism embosser on a laptop screen"></a>
+        <a href="assets/images/crank-mechanism-build.jpg" class="lightbox-trigger"><img src="assets/images/crank-mechanism-build.jpg" alt="Physical motorized crank mechanism embosser, angle one"></a>
       </div>
       <div>
         <span class="project-num">04</span>
@@ -506,6 +561,59 @@
   </footer>
 
 </div>
+
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕ close</button>
+  <figure class="lightbox-figure">
+    <img id="lightboxImg" src="" alt="">
+    <figcaption class="lightbox-caption" id="lightboxCaption"></figcaption>
+  </figure>
+</div>
+
+<script>
+  (function () {
+    var overlay = document.getElementById('lightboxOverlay');
+    var overlayImg = document.getElementById('lightboxImg');
+    var overlayCaption = document.getElementById('lightboxCaption');
+
+    function openLightbox(src, alt) {
+      overlayImg.src = src;
+      overlayImg.alt = alt || '';
+      overlayCaption.textContent = alt || '';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      overlay.classList.remove('open');
+      overlayImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('a.lightbox-trigger').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var img = a.querySelector('img');
+        openLightbox(a.getAttribute('href'), img ? img.alt : '');
+      });
+    });
+
+    document.querySelectorAll('figure.lightbox-trigger').forEach(function (fig) {
+      fig.addEventListener('click', function () {
+        var img = fig.querySelector('img');
+        if (img) openLightbox(img.src, img.alt);
+      });
+    });
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeLightbox();
+    });
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+</script>
 
 </body>
 </html>
