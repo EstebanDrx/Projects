@@ -266,6 +266,21 @@
   .project-gallery.single { grid-template-columns: 1fr; }
   .project-gallery.single img { height: 230px; }
 
+  .project-gallery.stacked { grid-template-columns: 1fr; }
+  .project-gallery.stacked video {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    background: var(--bg-alt);
+  }
+  .project-gallery.stacked img { height: 200px; }
+
   .project-num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
@@ -401,9 +416,12 @@
     </div>
 
     <div class="project">
-      <div class="project-gallery">
-        <a href="resume_imgs/boxing_robot.jpg" target="_blank" rel="noopener"><img src="resume_imgs/boxing_robot.jpg" alt="LEGO Spike Prime boxing robot, angle one"></a>
-        <a href="IMG_20240915_210125100.jpg" target="_blank" rel="noopener"><img src="IMG_20240915_210125100.jpg" alt="LEGO Spike Prime boxing robot, angle two"></a>
+      <div class="project-gallery stacked">
+        <video controls preload="metadata" poster="boxing_robot_clip_poster.jpg" playsinline>
+          <source src="boxing_robot_clip.mp4" type="video/mp4">
+          Your browser doesn't support embedded video — <a href="boxing_robot_clip.mp4">download the clip</a> instead.
+        </video>
+        <a href="IMG_20240915_210125100.jpg" target="_blank" rel="noopener"><img src="IMG_20240915_210125100.jpg" alt="LEGO Spike Prime boxing robot, static shot"></a>
       </div>
       <div>
         <span class="project-num">02</span>
