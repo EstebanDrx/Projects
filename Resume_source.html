@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Esteban Dominguez Resume</title>
+<style>
+  @page { size: Letter; margin: 0.45in 0.55in; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    font-size: 9.7pt;
+    line-height: 1.32;
+    margin: 0;
+  }
+  .name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: bold;
+    font-size: 28pt;
+    line-height: 1.05;
+    margin: 0;
+  }
+  .tagline {
+    font-size: 10pt;
+    color: #444;
+    margin: 4px 0 0 0;
+  }
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .contact {
+    text-align: right;
+    font-size: 9.5pt;
+    font-weight: bold;
+    line-height: 1.6;
+  }
+  .contact a { color: #1a5fb4; text-decoration: none; }
+  .columns { display: flex; gap: 28px; }
+  .main { flex: 2.1; }
+  .side { flex: 1; }
+  h2.section {
+    color: #1a5fb4;
+    font-size: 10pt;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: none;
+    margin: 0 0 7px 0;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .entry { margin-bottom: 10px; break-inside: avoid; page-break-inside: avoid; }
+  .entry .role { font-weight: bold; }
+  .entry .role .title { font-weight: bold; font-style: italic; }
+  .entry .dates { color: #777; font-size: 8.5pt; margin: 1px 0 3px 0; }
+  .entry .desc { color: #333; }
+  .side .block { margin-bottom: 16px; }
+  .side ul { list-style: none; margin: 0; padding: 0; }
+  .side li { margin-bottom: 4px; }
+  .page-break { page-break-before: always; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .project-card { break-inside: avoid; page-break-inside: avoid; }
+  .project-card img {
+    width: 100%;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+  .project-card .p-title {
+    font-weight: bold;
+    margin: 6px 0 2px 0;
+    font-size: 9.7pt;
+  }
+  .project-card .p-desc {
+    font-size: 8.8pt;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-row">
+  <div>
+    <p class="name">Esteban<br>Dominguez</p>
+    <p class="tagline">Faithful hard worker</p>
+  </div>
+  <div class="contact">
+    (469) 571 - 0797<br>
+    <a href="mailto:estebandzma@gmail.com">estebandzma@gmail.com</a><br>
+    <a href="mailto:edomin02@tufts.edu">edomin02@tufts.edu</a>
+  </div>
+</div>
+
+<div class="columns">
+  <div class="main">
+    <h2 class="section">Experience</h2>
+
+    <div class="entry">
+      <div class="role">Vida Life Church, 3516 Oates Dr, Mesquite, TX 75150 - Lead audio and visual technician</div>
+      <div class="dates">Aug 2022 - Aug 2024</div>
+      <div class="desc">I was incharge of both the audio and video for the church's English service. This means that I had to get to church early to turn every speaker and computer on, be there while the musicians practiced and adjust their sound accordingly. Also, when we could, I would set up the cameras and livestream software for the livestream.</div>
+    </div>
+
+    <div class="entry">
+      <div class="role">Vida Life Church, 3516 Oates Dr, Mesquite, TX 75150 — Kids Church helper</div>
+      <div class="dates">Aug 2022 - Aug 2024</div>
+      <div class="desc">At my church I volunteered to be in a group to be able to take care of children, ages from 5-12, giving them both fun activities to do and the word of God.</div>
+    </div>
+
+    <div class="entry">
+      <div class="role">Vida Life Church, 3516 Oates Dr, Mesquite, TX 75150 — <span class="title">Jr-Commander</span></div>
+      <div class="dates">Aug 2022 - Aug 2024</div>
+      <div class="desc">Wednesdays at church I was a part of an organization called Royal Rangers, in which, as a highschooler, I was put in charge of kids ages 6-8. Here i was given a lesson that I had to give and while teaching them about God, had to also make it entertaining</div>
+    </div>
+
+    <div class="entry">
+      <div class="role">Tufts Dining, 200 Packard Ave, Medford, MA 02155 — <span class="title">Dining assistant</span></div>
+      <div class="dates">Aug 2024 - May 2025</div>
+      <div class="desc">At Carmichael Dining, I had a very active role with daily changing tasks. My duties included maintaining the cleanliness of the dining room by sanitizing and cleaning tables, setting up chairs and tables, and maintaining the area clean and tidy as a whole. I also worked in the dishroom, where I ensured all plates and utensils were sorted and stocked correctly. Occasionally, I was also in charge of the pizza station, which involved creating pizzas and having them prepared to serve on the serving line the moment students arrived.</div>
+    </div>
+
+    <div class="entry">
+      <div class="role">Bright Management, 9535 Forest Ln #209, Dallas, TX 75243 — <span class="title">Professional Fundraiser</span></div>
+      <div class="dates">June 2025 - June 2025</div>
+      <div class="desc">As a fundraiser I was responsible for grabbing the attention of passerbyers and trying to sell them to a charity. Here I learned communication skills and how to quickly express my message in an efficient and concise way.</div>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="block">
+      <h2 class="section">Skills</h2>
+      <ul>
+        <li>Hard worker</li>
+        <li>Focused</li>
+        <li>Great Communicator</li>
+        <li>Work well in groups</li>
+        <li>Patient with people</li>
+        <li>Quick learner</li>
+        <li>Great with computers</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h2 class="section">Awards</h2>
+      <ul><li><strong>AP Scholar Award</strong></li></ul>
+    </div>
+    <div class="block">
+      <h2 class="section">Languages</h2>
+      <div>Fluent in English and Spanish, know java pretty well, familiar with java script and python, novice in French</div>
+    </div>
+  </div>
+</div>
+
+<h2 class="section" style="margin-top:12px;">Education</h2>
+
+<div class="entry">
+  <div class="role">SEM at Townview, 1201 E 8th St, Dallas, TX 75203 — Highschool Degree</div>
+  <div class="dates">Aug 2020 - May 2024</div>
+  <div class="desc">At SEM I got a world class education with some of the best teachers teaching some of the most challenging subjects. I graduated with AP honors and got into a very select university.</div>
+</div>
+
+<div class="entry">
+  <div class="role">Tufts University, 419 Boston Ave, Medford, MA 02155 — 4th Semester</div>
+  <div class="dates">Sep 2024 - May 2025</div>
+  <div class="desc">I am proud to say that I am currently studying in TUFTS University as a mechanical engineer undergraduate.</div>
+</div>
+
+<h2 class="section" style="margin-top:14px;">Projects</h2>
+<div class="projects-grid">
+
+  <div class="project-card">
+    <img src="resume_imgs/drawing_machine.jpg">
+    <div class="p-title">LEGO Spike Prime Drawing Machine</div>
+    <div class="p-desc">Designed and built a motorized drawing machine from LEGO Spike Prime components, using linkages and gearing to trace repeating geometric patterns.</div>
+  </div>
+
+  <div class="project-card">
+    <img src="resume_imgs/boxing_robot.jpg">
+    <div class="p-title">LEGO Spike Prime Boxing Robot</div>
+    <div class="p-desc">Built a two-motor robot with articulated boxing-glove arms, controlling arm motion through a gear and linkage system driven by a Spike Prime hub.</div>
+  </div>
+
+  <div class="project-card">
+    <img src="resume_imgs/vehicle_cad.jpg">
+    <div class="p-title">Vehicle Frame CAD Model</div>
+    <div class="p-desc">Modeled a full vehicle cab and frame assembly, including side access stairs, in SolidWorks as a mechanical design exercise.</div>
+  </div>
+
+  <div class="project-card">
+    <img src="resume_imgs/crank_mechanism.jpg">
+    <div class="p-title">Motorized Crank Mechanism</div>
+    <div class="p-desc">Fabricated a wooden mechanism housing driven by a DC motor and hand crank, wiring a battery pack to power and test the drive system.</div>
+  </div>
+
+</div>
+
+</body>
+</html>

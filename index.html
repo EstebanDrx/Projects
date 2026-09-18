@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esteban Dominguez — Portfolio</title>
+<meta name="description" content="Mechanical engineering projects by Esteban Dominguez — CAD, manufacturing, and mechatronics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f4ef;
+    --bg-alt: #ebe9e1;
+    --paper: #ffffff;
+    --ink: #1c1c1c;
+    --ink-soft: #57534e;
+    --blue: #1a5fb4;
+    --blue-soft: #dce8fb;
+    --line: #d8d5cb;
+    --accent: #d3651a;
+    --grid-line: rgba(26, 95, 180, 0.08);
+    --shadow: 0 1px 0 rgba(0,0,0,0.03), 0 8px 24px rgba(28,28,28,0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --bg-alt: #191c21;
+      --paper: #1c1f25;
+      --ink: #eceae4;
+      --ink-soft: #a3a099;
+      --blue: #6ea8ff;
+      --blue-soft: #1e2a3d;
+      --line: #2c2f36;
+      --accent: #ff9c5c;
+      --grid-line: rgba(110, 168, 255, 0.08);
+      --shadow: 0 1px 0 rgba(0,0,0,0.2), 0 8px 28px rgba(0,0,0,0.35);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+      var(--bg);
+    background-size: 28px 28px, 28px 28px, auto;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  a { color: var(--blue); }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ---------- Header ---------- */
+  header.hero {
+    padding: 64px 0 48px;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+    background: var(--blue-soft);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-bottom: 18px;
+  }
+
+  .kicker .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 1.6s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.8); }
+  }
+
+  h1.name {
+    font-size: clamp(34px, 6vw, 52px);
+    margin: 0 0 6px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .name .cursor {
+    display: inline-block;
+    width: 3px;
+    background: var(--accent);
+    margin-left: 6px;
+    animation: blink 1s step-end infinite;
+    height: 0.85em;
+    vertical-align: -0.1em;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .tagline {
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin: 0 0 26px;
+    max-width: 620px;
+  }
+
+  .terminal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13.5px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 16px 18px;
+    max-width: 620px;
+    color: var(--ink-soft);
+  }
+  .terminal .prompt { color: var(--accent); }
+  .terminal .path { color: var(--blue); }
+  .terminal .out { color: var(--ink); }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 9px 14px;
+    border-radius: 7px;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); border-color: var(--blue); }
+  .btn.primary { background: var(--blue); color: white; border-color: var(--blue); }
+  .btn.primary:hover { filter: brightness(1.08); }
+
+  /* ---------- Section labels ---------- */
+  .section { padding: 56px 0; border-bottom: 1px dashed var(--line); }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--blue);
+    margin: 0 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before { content: "//"; color: var(--ink-soft); opacity: 0.5; }
+
+  .gear {
+    display: inline-block;
+    animation: spin 6s linear infinite;
+    transform-origin: 50% 50%;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  p.lede {
+    max-width: 640px;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+
+  /* ---------- About / shop strip ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+
+  .shop-shot {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .shop-shot img { display: block; width: 100%; height: 260px; object-fit: cover; }
+  .shop-shot figcaption {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    padding: 8px 12px;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+  }
+
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    background: var(--blue-soft);
+    color: var(--blue);
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  /* ---------- Projects ---------- */
+  .project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .project:first-of-type { border-top: none; padding-top: 0; }
+  @media (max-width: 780px) {
+    .project { grid-template-columns: 1fr; }
+  }
+
+  .project-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .project-gallery a {
+    display: block;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .project-gallery img {
+    display: block;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+    background: var(--bg-alt);
+  }
+  .project-gallery a:hover img { transform: scale(1.06); }
+  .project-gallery.single { grid-template-columns: 1fr; }
+  .project-gallery.single img { height: 230px; }
+
+  .project-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .project h3 {
+    margin: 0 0 4px;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+  }
+
+  .project .spec {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+
+  .project ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--ink-soft);
+    font-size: 14.5px;
+  }
+  .project ul li { margin-bottom: 6px; }
+  .project ul li::marker { color: var(--blue); }
+
+  /* ---------- Skills ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+  }
+  .skill-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .skill-card h4 {
+    margin: 0 0 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .skill-card ul { margin: 0; padding-left: 16px; font-size: 14px; color: var(--ink-soft); }
+  .skill-card li { margin-bottom: 5px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 40px 0 60px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  footer .heart { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker"><span class="dot"></span>AVAILABLE FOR MECHANICAL ENGINEERING INTERNSHIPS</span>
+    <h1 class="name">Esteban Dominguez<span class="cursor"></span></h1>
+    <p class="tagline">Mechanical Engineering undergraduate at Tufts University. I design things in CAD, then go make them not work, then make them work.</p>
+
+    <div class="terminal">
+      <span class="prompt">esteban@tufts</span>:<span class="path">~/portfolio</span>$ whoami<br>
+      <span class="out">&gt; CAD (Inventor / SolidWorks / Onshape) · COMSOL Multiphysics · manual mill, lathe &amp; drill press · sheet metal, laser cutting, 3D printing</span>
+    </div>
+
+    <div class="links">
+      <a class="btn primary" href="mailto:estebandzma@gmail.com">Email Me</a>
+      <a class="btn" href="Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+      <a class="btn" href="#projects">See Projects ↓</a>
+    </div>
+  </header>
+
+  <section class="section" id="about">
+    <p class="section-label"><span class="gear">⚙</span>about</p>
+    <div class="about-grid">
+      <div>
+        <p class="lede">
+          I'm a Mechanical Engineering student who's happiest somewhere between a CAD model and a pile of sawdust.
+          I currently work as a Teaching Assistant in Tufts' Materials &amp; Manufacturing Lab, where I help
+          students turn engineering drawings into real parts &mdash; sheet metal boxes, sand-cast pins, and
+          machined components &mdash; on the drill press, mill, and lathe. Outside the shop, I model and simulate
+          in CAD and COMSOL, and I build the occasional over-engineered LEGO robot.
+        </p>
+        <div class="chip-row">
+          <span class="chip">Inventor</span>
+          <span class="chip">SolidWorks</span>
+          <span class="chip">Onshape</span>
+          <span class="chip">COMSOL Multiphysics</span>
+          <span class="chip">Manual Mill &amp; Lathe</span>
+          <span class="chip">GD&amp;T</span>
+          <span class="chip">Python</span>
+        </div>
+      </div>
+      <figure class="shop-shot">
+        <img src="IMG_20250922_173501884.jpg" alt="Measuring a sheet metal bracket with digital calipers against its engineering drawing">
+        <figcaption>// inspecting a machined bracket against its drawing, digital calipers in hand</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <p class="section-label"><span class="gear">⚙</span>projects</p>
+
+    <div class="project">
+      <div class="project-gallery">
+        <a href="resume_imgs/drawing_machine.jpg" target="_blank" rel="noopener"><img src="resume_imgs/drawing_machine.jpg" alt="LEGO Spike Prime drawing machine, angle one"></a>
+        <a href="IMG_20240921_161812023.jpg" target="_blank" rel="noopener"><img src="IMG_20240921_161812023.jpg" alt="LEGO Spike Prime drawing machine, angle two"></a>
+      </div>
+      <div>
+        <span class="project-num">01</span>
+        <h3>LEGO Spike Prime Drawing Machine</h3>
+        <p class="spec">two-axis pen plotter · first college engineering build</p>
+        <ul>
+          <li>Designed and built a two-axis mechanism using LEGO Spike Prime motors and linkages to drive a pen across X and Y</li>
+          <li>Programmed motion sequences to reproduce the spiral and radial patterns shown above</li>
+          <li>First hands-on project in mechanism design and motion control</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-gallery">
+        <a href="resume_imgs/boxing_robot.jpg" target="_blank" rel="noopener"><img src="resume_imgs/boxing_robot.jpg" alt="LEGO Spike Prime boxing robot, angle one"></a>
+        <a href="IMG_20240915_210125100.jpg" target="_blank" rel="noopener"><img src="IMG_20240915_210125100.jpg" alt="LEGO Spike Prime boxing robot, angle two"></a>
+      </div>
+      <div>
+        <span class="project-num">02</span>
+        <h3>LEGO Spike Prime Boxing Robot</h3>
+        <p class="spec">camera-driven hand tracking · team final project</p>
+        <ul>
+          <li>Built a self-balancing two-wheeled robot with boxing-glove end effectors on LEGO Spike Prime</li>
+          <li>Combined it with laptop camera hand-tracking so a player's real punches drive the robot's punches in real time</li>
+          <li>Worked in a team to merge mechanical design, motor control, and computer vision into one system</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-gallery">
+        <a href="resume_imgs/vehicle_cad.jpg" target="_blank" rel="noopener"><img src="resume_imgs/vehicle_cad.jpg" alt="Futsal ring CAD model, render one"></a>
+        <a href="IMG_20251213_124649_152.jpg" target="_blank" rel="noopener"><img src="IMG_20251213_124649_152.jpg" alt="Futsal ring CAD model, render two"></a>
+      </div>
+      <div>
+        <span class="project-num">03</span>
+        <h3>Futsal Ring</h3>
+        <p class="spec">CAD model → manufactured structure · manufacturing-focused course</p>
+        <ul>
+          <li>Modeled a full rink frame in CAD, then translated the design into physical parts using sheet metal and shop stock</li>
+          <li>Bent structural elements on a sheet metal brake and laser-cut acrylic for the rink's center circle</li>
+          <li>Manufactured companion pucks to play with on the finished rink</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-gallery">
+        <a href="IMG-20260312-WA0004.jpg" target="_blank" rel="noopener"><img src="IMG-20260312-WA0004.jpg" alt="CAD model of the motorized crank mechanism embosser on a laptop screen"></a>
+        <a href="resume_imgs/crank_mechanism.jpg" target="_blank" rel="noopener"><img src="resume_imgs/crank_mechanism.jpg" alt="Physical motorized crank mechanism embosser, angle one"></a>
+      </div>
+      <div>
+        <span class="project-num">04</span>
+        <h3>Motorized Crank Mechanism</h3>
+        <p class="spec">4-bar linkage embosser · CAD to physical build</p>
+        <ul>
+          <li>Designed a 4-bar linkage embosser mechanism in CAD before cutting any material</li>
+          <li>Built the housing from laser-cut wood and mounted a DC motor to drive the linkage</li>
+          <li>Took the project end-to-end from digital model to a working physical prototype</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="section" id="skills">
+    <p class="section-label"><span class="gear">⚙</span>toolbox</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Design</h4>
+        <ul>
+          <li>3D modeling &amp; CAD (Inventor, SolidWorks, Onshape)</li>
+          <li>Engineering drawings &amp; GD&amp;T</li>
+          <li>COMSOL Multiphysics (heat transfer &amp; CFD)</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Fabrication</h4>
+        <ul>
+          <li>Drill press, mill &amp; lathe</li>
+          <li>Sheet metal, riveting &amp; sanding</li>
+          <li>3D printing &amp; rapid prototyping</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h4>Software</h4>
+        <ul>
+          <li>VS Code</li>
+          <li>Python, Java, JavaScript</li>
+          <li>Basic networking &amp; server maintenance (built a home NAS)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    built with HTML, CSS, and a mild caffeine dependency <span class="heart">♥</span><br>
+    Esteban Dominguez · <a href="mailto:estebandzma@gmail.com">estebandzma@gmail.com</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
