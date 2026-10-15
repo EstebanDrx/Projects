@@ -3,18 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Esteban Dominguez Resume</title>
+<!--
+  Source for resume/Resume.pdf (the "Download Resume" link on the portfolio site).
+  Render to PDF from this folder:
+    chromium --headless --no-pdf-header-footer --print-to-pdf=Resume.pdf Resume_source.html
+-->
 <style>
   @page { size: Letter; margin: 0.45in 0.55in; }
   * { box-sizing: border-box; }
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, Arial, "Liberation Sans", sans-serif;
     color: #222;
+    background: #fff;
     font-size: 9.7pt;
-    line-height: 1.32;
+    line-height: 1.27;
     margin: 0;
   }
+  a { color: #1a5fb4; text-decoration: none; }
   .name {
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Latin Modern Roman", "Times New Roman", "Liberation Serif", serif;
     font-weight: bold;
     font-size: 28pt;
     line-height: 1.05;
@@ -22,7 +29,7 @@
   }
   .tagline {
     font-size: 10pt;
-    color: #444;
+    color: #777;
     margin: 4px 0 0 0;
   }
   .header-row {
@@ -35,67 +42,81 @@
     text-align: right;
     font-size: 9.5pt;
     font-weight: bold;
-    line-height: 1.6;
+    line-height: 1.5;
   }
-  .contact a { color: #1a5fb4; text-decoration: none; }
   .columns { display: flex; gap: 28px; }
   .main { flex: 2.1; }
   .side { flex: 1; }
   h2.section {
     color: #1a5fb4;
     font-size: 10pt;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
-    border-bottom: none;
     margin: 0 0 7px 0;
     break-after: avoid;
     page-break-after: avoid;
   }
-  .entry { margin-bottom: 10px; break-inside: avoid; page-break-inside: avoid; }
+  .entry { margin-bottom: 7px; break-inside: avoid; page-break-inside: avoid; }
   .entry .role { font-weight: bold; }
-  .entry .role .title { font-weight: bold; font-style: italic; }
+  .entry .role .title { font-style: italic; }
   .entry .dates { color: #777; font-size: 8.5pt; margin: 1px 0 3px 0; }
-  .entry .desc { color: #333; }
-  .side .block { margin-bottom: 16px; }
+  .entry ul { margin: 2px 0 0; padding-left: 16px; }
+  .entry li { margin-bottom: 1px; }
+  .side .block { margin-bottom: 10px; }
   .side ul { list-style: none; margin: 0; padding: 0; }
-  .side li { margin-bottom: 4px; }
-  .page-break { page-break-before: always; }
+  .side li { margin-bottom: 2px; }
+  .page-break { break-before: page; page-break-before: always; }
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    column-gap: 24px;
+    row-gap: 26px;
     margin-top: 8px;
   }
   .project-card { break-inside: avoid; page-break-inside: avoid; }
+  .project-card .media {
+    height: 4.3cm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .project-card img {
-    width: 100%;
-    height: 135px;
-    object-fit: cover;
-    border-radius: 4px;
+    max-width: 100%;
+    max-height: 100%;
     display: block;
   }
-  .project-card .p-title {
-    font-weight: bold;
-    margin: 6px 0 2px 0;
-    font-size: 9.7pt;
+  .project-card .p-title { font-weight: bold; margin: 6px 0 2px 0; }
+  .project-card .p-desc { font-size: 8.8pt; color: #333; }
+  .calc {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #c9d6ea;
+    border-radius: 4px;
+    background: #f4f7fc;
+    padding: 12px 16px;
+    font-family: "DejaVu Sans Mono", "Courier New", monospace;
+    font-size: 8.6pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
   }
-  .project-card .p-desc {
-    font-size: 8.8pt;
-    color: #333;
-  }
+  .calc .label { color: #777; font-size: 8pt; }
+  .calc strong { color: #1a5fb4; }
 </style>
 </head>
 <body>
 
 <div class="header-row">
   <div>
-    <p class="name">Esteban<br>Dominguez</p>
-    <p class="tagline">Faithful hard worker</p>
+    <p class="name">Esteban Dominguez</p>
+    <p class="tagline">Faithful Hard Worker</p>
   </div>
   <div class="contact">
     (469) 571 - 0797<br>
     <a href="mailto:estebandzma@gmail.com">estebandzma@gmail.com</a><br>
-    <a href="mailto:edomin02@tufts.edu">edomin02@tufts.edu</a>
+    <a href="mailto:edomin02@tufts.edu">edomin02@tufts.edu</a><br>
+    <a href="https://estebandrx.github.io/Projects/">Portfolio</a>
   </div>
 </div>
 
@@ -104,99 +125,146 @@
     <h2 class="section">Experience</h2>
 
     <div class="entry">
-      <div class="role">Vida Life Church, 3516 Oates Dr, Mesquite, TX 75150 - Lead audio and visual technician</div>
-      <div class="dates">Aug 2022 - Aug 2024</div>
-      <div class="desc">I was incharge of both the audio and video for the church's English service. This means that I had to get to church early to turn every speaker and computer on, be there while the musicians practiced and adjust their sound accordingly. Also, when we could, I would set up the cameras and livestream software for the livestream.</div>
+      <div class="role">Tufts University Mechanical Engineering Department, Medford, MA 02155 — <span class="title">Materials &amp; Manufacturing Lab Teaching Assistant</span></div>
+      <div class="dates">Sep 2026 - Present</div>
+      <ul>
+        <li>Help students manufacture parts across a range of processes, including a sheet metal box, a sand-cast pin, and a part machined directly from an engineering drawing</li>
+        <li>Operate a drill press, mill, and lathe daily while guiding students through proper technique</li>
+        <li>Run heat transfer and CFD simulations in COMSOL Multiphysics to support design analysis</li>
+      </ul>
     </div>
 
     <div class="entry">
-      <div class="role">Vida Life Church, 3516 Oates Dr, Mesquite, TX 75150 — Kids Church helper</div>
+      <div class="role">Vida Life Church, Mesquite, TX — <span class="title">Volunteer: AV Technician, Kids Church Leader &amp; Jr. Commander</span></div>
       <div class="dates">Aug 2022 - Aug 2024</div>
-      <div class="desc">At my church I volunteered to be in a group to be able to take care of children, ages from 5-12, giving them both fun activities to do and the word of God.</div>
+      <ul>
+        <li>Ran live audio and video for the weekly English service, including sound mixing, camera operation, and livestream setup</li>
+        <li>Led activities for Kids Church, ages 5–12, combining games with weekly lessons</li>
+        <li>Served as Jr. Commander in Royal Rangers, planning and teaching weekly lessons to boys ages 6–8</li>
+      </ul>
     </div>
 
     <div class="entry">
-      <div class="role">Vida Life Church, 3516 Oates Dr, Mesquite, TX 75150 — <span class="title">Jr-Commander</span></div>
-      <div class="dates">Aug 2022 - Aug 2024</div>
-      <div class="desc">Wednesdays at church I was a part of an organization called Royal Rangers, in which, as a highschooler, I was put in charge of kids ages 6-8. Here i was given a lesson that I had to give and while teaching them about God, had to also make it entertaining</div>
-    </div>
-
-    <div class="entry">
-      <div class="role">Tufts Dining, 200 Packard Ave, Medford, MA 02155 — <span class="title">Dining assistant</span></div>
+      <div class="role">Tufts Dining, 200 Packard Ave, Medford, MA 02155 — <span class="title">Dining Assistant</span></div>
       <div class="dates">Aug 2024 - May 2025</div>
-      <div class="desc">At Carmichael Dining, I had a very active role with daily changing tasks. My duties included maintaining the cleanliness of the dining room by sanitizing and cleaning tables, setting up chairs and tables, and maintaining the area clean and tidy as a whole. I also worked in the dishroom, where I ensured all plates and utensils were sorted and stocked correctly. Occasionally, I was also in charge of the pizza station, which involved creating pizzas and having them prepared to serve on the serving line the moment students arrived.</div>
+      <ul>
+        <li>Maintained cleanliness and setup of the dining room, including sanitizing and arranging tables and chairs</li>
+        <li>Sorted and restocked dishware in the dishroom to keep service running smoothly</li>
+        <li>Operated the pizza station, preparing food ahead of the lunch rush</li>
+      </ul>
     </div>
 
     <div class="entry">
-      <div class="role">Bright Management, 9535 Forest Ln #209, Dallas, TX 75243 — <span class="title">Professional Fundraiser</span></div>
+      <div class="role">Bright Management, Dallas, TX — <span class="title">Professional Fundraiser</span></div>
       <div class="dates">June 2025 - June 2025</div>
-      <div class="desc">As a fundraiser I was responsible for grabbing the attention of passerbyers and trying to sell them to a charity. Here I learned communication skills and how to quickly express my message in an efficient and concise way.</div>
+      <ul>
+        <li>Approached and engaged the public to represent and raise support for a charity</li>
+        <li>Developed concise, persuasive communication skills under time pressure</li>
+      </ul>
     </div>
   </div>
 
   <div class="side">
     <div class="block">
-      <h2 class="section">Skills</h2>
+      <h2 class="section">Technical Skills</h2>
+      <ul>
+        <li>3D Modeling &amp; CAD (Inventor, SolidWorks, some Onshape)</li>
+        <li>COMSOL Multiphysics (Heat Transfer &amp; CFD)</li>
+        <li>MATLAB &amp; Python for engineering analysis</li>
+        <li>3D Printing &amp; Rapid Prototyping</li>
+        <li>Proficient in VS Code</li>
+        <li>Engineering Drawings &amp; GD&amp;T</li>
+        <li>Basic Networking &amp; Server Maintenance (built and maintain a home NAS)</li>
+        <li>Proficient with Computers &amp; AI Tools (local and cloud-based)</li>
+      </ul>
+    </div>
+    <div class="block">
+      <h2 class="section">Soft Skills</h2>
       <ul>
         <li>Hard worker</li>
         <li>Focused</li>
         <li>Great Communicator</li>
-        <li>Work well in groups</li>
+        <li>Works well in groups</li>
         <li>Patient with people</li>
         <li>Quick learner</li>
-        <li>Great with computers</li>
       </ul>
     </div>
     <div class="block">
       <h2 class="section">Awards</h2>
-      <ul><li><strong>AP Scholar Award</strong></li></ul>
+      <div><strong>Dean’s List</strong> (Fall 2024, Spring 2025, Fall 2025, Spring 2026)</div>
+      <div><strong>AP Scholar Award</strong></div>
     </div>
     <div class="block">
-      <h2 class="section">Languages</h2>
-      <div>Fluent in English and Spanish, know java pretty well, familiar with java script and python, novice in French</div>
+      <h2 class="section">Spoken Languages</h2>
+      <div>English (native), Spanish (fluent), French (basic)</div>
+    </div>
+    <div class="block">
+      <h2 class="section">Programming</h2>
+      <div>MATLAB, Python, Java, JavaScript</div>
     </div>
   </div>
 </div>
 
-<h2 class="section" style="margin-top:12px;">Education</h2>
+<h2 class="section" style="margin-top:8px;">Education</h2>
 
 <div class="entry">
-  <div class="role">SEM at Townview, 1201 E 8th St, Dallas, TX 75203 — Highschool Degree</div>
+  <div class="role">SEM at Townview, Dallas, TX — High School Diploma</div>
   <div class="dates">Aug 2020 - May 2024</div>
-  <div class="desc">At SEM I got a world class education with some of the best teachers teaching some of the most challenging subjects. I graduated with AP honors and got into a very select university.</div>
+  <div>Graduated with AP Honors from a selective magnet program.</div>
 </div>
 
 <div class="entry">
-  <div class="role">Tufts University, 419 Boston Ave, Medford, MA 02155 — 4th Semester</div>
-  <div class="dates">Sep 2024 - May 2025</div>
-  <div class="desc">I am proud to say that I am currently studying in TUFTS University as a mechanical engineer undergraduate.</div>
+  <div class="role">Tufts University, Medford, MA — B.S. in Mechanical Engineering</div>
+  <div class="dates">Sep 2024 - Expected May 2028 • GPA: 3.44</div>
+  <div>Relevant coursework: Mechanics I &amp; II, Thermal Fluid Systems I &amp; II, Materials &amp; Manufacturing I &amp; II, Engineering Design I &amp; II, Electronics &amp; Controls I, Aerodynamics.</div>
 </div>
 
-<h2 class="section" style="margin-top:14px;">Projects</h2>
+<div class="page-break"></div>
+<h2 class="section">Projects</h2>
 <div class="projects-grid">
 
   <div class="project-card">
-    <img src="resume_imgs/drawing_machine.jpg">
+    <div class="media"><img src="../assets/images/drawing-machine-1.jpg" alt="LEGO Spike Prime drawing machine"></div>
     <div class="p-title">LEGO Spike Prime Drawing Machine</div>
-    <div class="p-desc">Designed and built a motorized drawing machine from LEGO Spike Prime components, using linkages and gearing to trace repeating geometric patterns.</div>
+    <div class="p-desc">A two-axis pen plotter built from LEGO Spike Prime, using motor-driven linkages to trace geometric patterns such as spirals and radial bursts.</div>
   </div>
 
   <div class="project-card">
-    <img src="resume_imgs/boxing_robot.jpg">
+    <div class="media"><img src="../assets/images/boxing-robot.jpg" alt="LEGO Spike Prime boxing robot"></div>
     <div class="p-title">LEGO Spike Prime Boxing Robot</div>
-    <div class="p-desc">Built a two-motor robot with articulated boxing-glove arms, controlling arm motion through a gear and linkage system driven by a Spike Prime hub.</div>
+    <div class="p-desc">A self-balancing, two-wheeled robot with boxing-glove end effectors, controlled in real time by laptop camera hand-tracking so a player’s punches drive the robot’s. Built with a team, combining mechanical design, motor control, and computer vision.</div>
   </div>
 
   <div class="project-card">
-    <img src="resume_imgs/vehicle_cad.jpg">
-    <div class="p-title">Vehicle Frame CAD Model</div>
-    <div class="p-desc">Modeled a full vehicle cab and frame assembly, including side access stairs, in SolidWorks as a mechanical design exercise.</div>
+    <div class="media"><img src="../assets/images/futsal-ring.jpg" alt="Futsal ring CAD model"></div>
+    <div class="p-title">Futsal Ring</div>
+    <div class="p-desc">A full-scale futsal rink modeled in CAD, then manufactured using sheet metal bent on a brake and laser-cut acrylic for the center circle, plus a matching set of game pucks.</div>
   </div>
 
   <div class="project-card">
-    <img src="resume_imgs/crank_mechanism.jpg">
+    <div class="media"><img src="../assets/images/crank-mechanism-build.jpg" alt="Motorized crank mechanism prototype"></div>
     <div class="p-title">Motorized Crank Mechanism</div>
-    <div class="p-desc">Fabricated a wooden mechanism housing driven by a DC motor and hand crank, wiring a battery pack to power and test the drive system.</div>
+    <div class="p-desc">A 4-bar linkage embosser designed in CAD, then built as a working prototype with a laser-cut wood housing and a DC motor driving the linkage.</div>
+  </div>
+
+  <div class="project-card">
+    <div class="media"><img src="../assets/images/cfd-airfoil-velocity.png" alt="COMSOL velocity field around the airfoil"></div>
+    <div class="p-title">2D Airfoil CFD Simulation (COMSOL)</div>
+    <div class="p-desc">Laminar flow around a custom airfoil at a 26.6° angle of attack (Re ≈ 437). Ran a mesh-refinement study on coarse, normal, and fine meshes, pulled lift and drag from the pressure and viscous forces, and compared the results with an instructor benchmark in a technical report.</div>
+  </div>
+
+  <div class="project-card">
+    <div class="media">
+      <div class="calc">
+        <span class="label">// first-order power estimate</span>
+        <span>P = ρ · Q · g · H</span>
+        <span>&nbsp;&nbsp;= 1000 · 10 · 9.81 · 4.4 ≈ 432 kW</span>
+        <span>P<sub>real</sub> = 0.75 · P ≈ <strong>324 kW</strong></span>
+        <span class="label">Archimedes screw · Ø 5 m<br>H = 4.4 m · Q = 10 m³/s</span>
+      </div>
+    </div>
+    <div class="p-title">Charles River Hydroelectric Study</div>
+    <div class="p-desc">Picked the Silk Mill Dam site on the Charles River for its steady flow and 4.4 m head. Sized a 5 m Archimedes screw turbine and built a first-principles power model, estimating about 324 kW of real output.</div>
   </div>
 
 </div>
