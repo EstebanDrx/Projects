@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Esteban Dominguez — Portfolio</title>
-<meta name="description" content="Mechanical engineering projects by Esteban Dominguez — CAD, manufacturing, and mechatronics.">
+<meta name="description" content="Mechanical engineering projects by Esteban Dominguez — CAD, simulation, manufacturing, and mechatronics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -311,6 +311,25 @@
   .project ul li { margin-bottom: 6px; }
   .project ul li::marker { color: var(--blue); }
 
+  .calc-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    padding: 22px 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+  }
+  .calc-card p { margin: 0 0 8px; }
+  .calc-card strong { color: var(--blue); }
+  .calc-label {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin: 4px 0 12px;
+  }
+  .calc-card .calc-label:last-child { margin: 14px 0 0; }
+
   /* ---------- Skills ---------- */
   .skills-grid {
     display: grid;
@@ -412,7 +431,7 @@
 
     <div class="terminal">
       <span class="prompt">esteban@tufts</span>:<span class="path">~/portfolio</span>$ whoami<br>
-      <span class="out">&gt; CAD (Inventor / SolidWorks / Onshape) · COMSOL Multiphysics · manual mill, lathe &amp; drill press · sheet metal, laser cutting, 3D printing</span>
+      <span class="out">&gt; CAD (Inventor / SolidWorks / Onshape) · COMSOL Multiphysics · MATLAB &amp; Python · manual mill, lathe &amp; drill press · sheet metal, laser cutting, 3D printing</span>
     </div>
 
     <div class="links">
@@ -440,6 +459,7 @@
           <span class="chip">COMSOL Multiphysics</span>
           <span class="chip">Manual Mill &amp; Lathe</span>
           <span class="chip">GD&amp;T</span>
+          <span class="chip">MATLAB</span>
           <span class="chip">Python</span>
         </div>
       </div>
@@ -523,6 +543,46 @@
       </div>
     </div>
 
+    <div class="project">
+      <div class="project-gallery">
+        <a href="assets/images/cfd-airfoil-velocity.png" class="lightbox-trigger"><img src="assets/images/cfd-airfoil-velocity.png" alt="COMSOL velocity magnitude field with streamlines around the custom airfoil"></a>
+        <a href="assets/images/cfd-airfoil-mesh.png" class="lightbox-trigger"><img src="assets/images/cfd-airfoil-mesh.png" alt="Triangular mesh refined around the airfoil in COMSOL"></a>
+      </div>
+      <div>
+        <span class="project-num">05</span>
+        <h3>2D Airfoil CFD Simulation</h3>
+        <p class="spec">COMSOL laminar flow · Thermal Fluid Systems II · Fall 2026</p>
+        <ul>
+          <li>Designed a custom airfoil (conic leading edge blended into an R125 arc) at a ~26.6° angle of attack</li>
+          <li>Set up inlet boundary conditions and confirmed laminar flow from the Reynolds number (Re ≈ 437)</li>
+          <li>Ran a mesh-refinement study on coarse, normal, and fine meshes, checking solver convergence and resource use</li>
+          <li>Pulled lift and drag from the pressure and viscous forces, then compared them with an instructor benchmark</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-gallery single">
+        <div class="calc-card">
+          <span class="calc-label">// first-order power estimate</span>
+          <p>P = ρ · Q · g · H</p>
+          <p>= 1000 · 10 · 9.81 · 4.4 ≈ 432 kW</p>
+          <p>P<sub>real</sub> = 0.75 · P ≈ <strong>324 kW</strong></p>
+          <span class="calc-label">Archimedes screw · Ø 5 m · H = 4.4 m · Q = 10 m³/s</span>
+        </div>
+      </div>
+      <div>
+        <span class="project-num">06</span>
+        <h3>Charles River Hydroelectric Study</h3>
+        <p class="spec">site selection · power analysis · Fall 2026</p>
+        <ul>
+          <li>Chose a site at the Silk Mill Dam (Hemlock Reservation) on the Charles River for its steady year-round flow and usable head</li>
+          <li>Sized a 5 m Archimedes screw turbine and derived the generation model from work–energy principles</li>
+          <li>Estimated about 324 kW of real output, using an efficiency factor to cover friction and other losses</li>
+        </ul>
+      </div>
+    </div>
+
   </section>
 
   <section class="section" id="skills">
@@ -548,7 +608,8 @@
         <h4>Software</h4>
         <ul>
           <li>VS Code</li>
-          <li>Python, Java, JavaScript</li>
+          <li>MATLAB &amp; Python (analysis, plotting)</li>
+          <li>Java, JavaScript</li>
           <li>Basic networking &amp; server maintenance (built a home NAS)</li>
         </ul>
       </div>
