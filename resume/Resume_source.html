@@ -70,12 +70,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 24px;
-    row-gap: 26px;
+    row-gap: 18px;
     margin-top: 8px;
   }
   .project-card { break-inside: avoid; page-break-inside: avoid; }
   .project-card .media {
-    height: 4.3cm;
+    height: 3.4cm;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -170,6 +170,7 @@
       <ul>
         <li>3D Modeling &amp; CAD (Inventor, SolidWorks, some Onshape)</li>
         <li>COMSOL Multiphysics (Heat Transfer &amp; CFD)</li>
+        <li>SolidWorks Simulation (Static FEA) &amp; Motion Studies</li>
         <li>MATLAB &amp; Python for engineering analysis</li>
         <li>3D Printing &amp; Rapid Prototyping</li>
         <li>Proficient in VS Code</li>
@@ -200,7 +201,7 @@
     </div>
     <div class="block">
       <h2 class="section">Programming</h2>
-      <div>MATLAB, Python, Java, JavaScript</div>
+      <div>MATLAB, Python, Java, JavaScript, SystemVerilog</div>
     </div>
   </div>
 </div>
@@ -216,7 +217,7 @@
 <div class="entry">
   <div class="role">Tufts University, Medford, MA — B.S. in Mechanical Engineering</div>
   <div class="dates">Sep 2024 - Expected May 2028 • GPA: 3.44</div>
-  <div>Relevant coursework: Mechanics I &amp; II, Thermal Fluid Systems I &amp; II, Materials &amp; Manufacturing I &amp; II, Engineering Design I &amp; II, Electronics &amp; Controls I, Aerodynamics.</div>
+  <div>Relevant coursework: Mechanics I &amp; II, Thermal Fluid Systems I &amp; II, Materials &amp; Manufacturing I &amp; II, Engineering Design I &amp; II, Electronics &amp; Controls I, Intro to Digital Electronics, Aerodynamics.</div>
 </div>
 
 <div class="page-break"></div>
@@ -265,6 +266,18 @@
     </div>
     <div class="p-title">Charles River Hydroelectric Study</div>
     <div class="p-desc">Picked the Silk Mill Dam site on the Charles River for its steady flow and 4.4 m head. Sized a 5 m Archimedes screw turbine and built a first-principles power model, estimating about 324 kW of real output.</div>
+  </div>
+
+  <div class="project-card">
+    <div class="media"><img src="../assets/images/fea-beam-von-mises.jpg" alt="SolidWorks von Mises stress plot of a cantilever beam"></div>
+    <div class="p-title">Cantilever Beam FEA (SolidWorks Simulation)</div>
+    <div class="p-desc">Static FEA of an end-loaded cantilever beam, validated against beam theory: 0.019 in max deflection by hand and in simulation, and 4.5 vs. 4.503 ksi max bending stress. Checked peak stress against the 37.5 ksi yield strength.</div>
+  </div>
+
+  <div class="project-card">
+    <div class="media"><img src="../assets/images/fpga-game-monitor.jpg" alt="FPGA game rendering pixel art on a VGA monitor"></div>
+    <div class="p-title">FPGA Modulus Math Game (Team of 4)</div>
+    <div class="p-desc">A timed arithmetic game on two FPGAs in SystemVerilog: one reads a 4×4 keypad, the other runs the game logic and drives a 640×480 VGA display. Created the pixel-art sprites and backgrounds and helped verify the LFSR random number generator.</div>
   </div>
 
 </div>

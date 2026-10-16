@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Esteban Dominguez — Portfolio</title>
-<meta name="description" content="Mechanical engineering projects by Esteban Dominguez — CAD, simulation, manufacturing, and mechatronics.">
+<meta name="description" content="Mechanical engineering projects by Esteban Dominguez — CAD, simulation, FEA, manufacturing, and mechatronics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -311,6 +311,9 @@
   .project ul li { margin-bottom: 6px; }
   .project ul li::marker { color: var(--blue); }
 
+  .proj-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .proj-links .btn { font-size: 12px; padding: 6px 11px; }
+
   .calc-card {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -457,6 +460,7 @@
           <span class="chip">SolidWorks</span>
           <span class="chip">Onshape</span>
           <span class="chip">COMSOL Multiphysics</span>
+          <span class="chip">FEA</span>
           <span class="chip">Manual Mill &amp; Lathe</span>
           <span class="chip">GD&amp;T</span>
           <span class="chip">MATLAB</span>
@@ -545,11 +549,89 @@
 
     <div class="project">
       <div class="project-gallery">
+        <a href="assets/images/truss-bridge-loaded.jpg" class="lightbox-trigger"><img src="assets/images/truss-bridge-loaded.jpg" alt="Truss bridge resting on two scales with a 200 g weight on top"></a>
+        <a href="assets/images/truss-bridge-solver.jpg" class="lightbox-trigger"><img src="assets/images/truss-bridge-solver.jpg" alt="Truss solver showing member forces in tension and compression"></a>
+      </div>
+      <div>
+        <span class="project-num">05</span>
+        <h3>Truss Bridge Load Test</h3>
+        <p class="spec">statics · hand calcs vs. measured reactions · team of 2</p>
+        <ul>
+          <li>Designed and built a 9-member truss with a partner, then confirmed it was statically determinate (2j = m + r)</li>
+          <li>Set the bridge on two scales and tested two 200 g load cases to measure the support reactions</li>
+          <li>Solved every member force by method of joints and sections; predicted reactions landed within 0.026 N of the measured values on average</li>
+          <li>Traced the remaining error to the as-built geometry (a diagonal that wasn't a perfect 45°) and to rounding carried through the calculations</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-gallery">
+        <a href="assets/images/linkage-cad.jpg" class="lightbox-trigger"><img src="assets/images/linkage-cad.jpg" alt="SolidWorks model of the linkage mechanism on its base plate"></a>
+        <a href="assets/images/linkage-path-trace.jpg" class="lightbox-trigger"><img src="assets/images/linkage-path-trace.jpg" alt="Simulated path trace of the linkage's coupler point"></a>
+      </div>
+      <div>
+        <span class="project-num">06</span>
+        <h3>Linkage Motion Analysis</h3>
+        <p class="spec">SolidWorks Motion · MATLAB · simulation vs. measured data</p>
+        <ul>
+          <li>Modeled a planar linkage in SolidWorks and ran a motion study to get the coupler's path trace and velocities</li>
+          <li>Compared position and velocity data measured on the physical mechanism against the simulation in MATLAB</li>
+          <li>Applied a Butterworth low-pass filter to clean up the noisy measured velocity data</li>
+          <li>Fixed links clipping through each other in the simulation by finding two beams that should have been constrained perpendicular</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-gallery">
+        <a href="assets/images/fea-beam-displacement.jpg" class="lightbox-trigger"><img src="assets/images/fea-beam-displacement.jpg" alt="SolidWorks Simulation displacement plot of a cantilever beam"></a>
+        <a href="assets/images/fea-beam-von-mises.jpg" class="lightbox-trigger"><img src="assets/images/fea-beam-von-mises.jpg" alt="Von Mises stress plot of the same cantilever beam"></a>
+      </div>
+      <div>
+        <span class="project-num">07</span>
+        <h3>Cantilever Beam FEA</h3>
+        <p class="spec">SolidWorks Simulation · static study · hand-calc validation</p>
+        <ul>
+          <li>Set up a static FEA study of an end-loaded cantilever beam with fixtures, loads, and material properties</li>
+          <li>Checked the simulation against beam theory: 0.019 in max deflection by hand and in FEA, and 4.5 ksi vs. 4.503 ksi max bending stress</li>
+          <li>Plotted stress along the beam and showed the von Mises stress follows the bending (axial) stress component</li>
+          <li>Compared peak stress with the material&rsquo;s 37.5 ksi yield strength to check the margin before yielding</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-gallery">
+        <a href="assets/images/fpga-game-monitor.jpg" class="lightbox-trigger"><img src="assets/images/fpga-game-monitor.jpg" alt="VGA monitor showing the game's pixel-art background, driven by the FPGA on the breadboard"></a>
+        <a href="assets/images/fpga-game-screen.jpg" class="lightbox-trigger"><img src="assets/images/fpga-game-screen.jpg" alt="Game screen with timer, health, and a modulo problem"></a>
+        <a href="assets/images/fpga-game-circuit.jpg" class="lightbox-trigger"><img src="assets/images/fpga-game-circuit.jpg" alt="Two FPGA boards, a 4x4 keypad, and buttons wired on breadboards"></a>
+        <a href="assets/images/breadboard-logic-lab.jpg" class="lightbox-trigger"><img src="assets/images/breadboard-logic-lab.jpg" alt="Densely wired breadboard from an earlier digital logic lab"></a>
+      </div>
+      <div>
+        <span class="project-num">08</span>
+        <h3>FPGA Modulus Math Game</h3>
+        <p class="spec">SystemVerilog · VGA output · 4-person team · Intro to Digital Electronics (ES 4) · Fall 2025</p>
+        <ul>
+          <li>Built a timed arithmetic game on two FPGAs: one scans and debounces a 4×4 keypad, the other runs the game state machine and drives a 640×480 VGA display</li>
+          <li>Created the game's pixel-art sprites and backgrounds, which were converted to memory files and rendered from block ROM</li>
+          <li>Helped develop and verify the 7-bit LFSR random number generator that creates each problem</li>
+          <li>Earlier in the course, built logic circuits by hand on breadboards and wrote a ROM-based 7-segment display animation</li>
+        </ul>
+        <div class="proj-links">
+          <a class="btn" href="https://youtu.be/Cynkk1SZgqY" target="_blank" rel="noopener">Watch Demo ↗</a>
+          <a class="btn" href="https://github.com/Dysd12/Modulus-Game/tree/main" target="_blank" rel="noopener">Source Code ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-gallery">
         <a href="assets/images/cfd-airfoil-velocity.png" class="lightbox-trigger"><img src="assets/images/cfd-airfoil-velocity.png" alt="COMSOL velocity magnitude field with streamlines around the custom airfoil"></a>
         <a href="assets/images/cfd-airfoil-mesh.png" class="lightbox-trigger"><img src="assets/images/cfd-airfoil-mesh.png" alt="Triangular mesh refined around the airfoil in COMSOL"></a>
       </div>
       <div>
-        <span class="project-num">05</span>
+        <span class="project-num">09</span>
         <h3>2D Airfoil CFD Simulation</h3>
         <p class="spec">COMSOL laminar flow · Thermal Fluid Systems II · Fall 2026</p>
         <ul>
@@ -572,7 +654,7 @@
         </div>
       </div>
       <div>
-        <span class="project-num">06</span>
+        <span class="project-num">10</span>
         <h3>Charles River Hydroelectric Study</h3>
         <p class="spec">site selection · power analysis · Fall 2026</p>
         <ul>
@@ -594,6 +676,7 @@
           <li>3D modeling &amp; CAD (Inventor, SolidWorks, Onshape)</li>
           <li>Engineering drawings &amp; GD&amp;T</li>
           <li>COMSOL Multiphysics (heat transfer &amp; CFD)</li>
+          <li>SolidWorks Simulation (static FEA) &amp; Motion</li>
         </ul>
       </div>
       <div class="skill-card">
@@ -610,6 +693,7 @@
           <li>VS Code</li>
           <li>MATLAB &amp; Python (analysis, plotting)</li>
           <li>Java, JavaScript</li>
+          <li>SystemVerilog (FPGA logic, VGA)</li>
           <li>Basic networking &amp; server maintenance (built a home NAS)</li>
         </ul>
       </div>
